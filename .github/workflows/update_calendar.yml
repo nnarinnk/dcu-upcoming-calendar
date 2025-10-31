@@ -8,11 +8,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     - uses: actions/checkout@v4
-      with:
-        # จำเป็นต้องใช้ Personal Access Token เพื่อให้ GitHub Actions สามารถ commit ไฟล์กลับได้
-        token: ${{ secrets.PAT_TOKEN }}
 
     - name: Set up Python
       uses: actions/setup-python@v5
