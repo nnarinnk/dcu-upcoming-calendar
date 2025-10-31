@@ -1,4 +1,5 @@
 # --- แนวคิดโค้ด (generate_dcu_cal.py) ---
+import os
 import requests
 from icalendar import Calendar, Event
 import datetime
