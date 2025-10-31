@@ -3,7 +3,7 @@ import requests
 from icalendar import Calendar, Event
 import datetime
 
-TMDB_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxx" # **ห้ามใส่จริง ให้ใช้ Secret แทน**
+TMDB_API_KEY = "TMDB_API_KEY" # **ห้ามใส่จริง ให้ใช้ Secret แทน**
 DC_STUDIOS_ID = 128064 # Company ID ของ DC Studios (ใช้สำหรับกรองข้อมูล)
 
 # 1. ฟังก์ชันดึงข้อมูลจาก TMDB (ตัวอย่าง: Upcoming Movies)

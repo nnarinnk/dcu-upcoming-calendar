@@ -1,0 +1,36 @@
+name: Update DCU Calendar
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # รันทุกวันตอนเที่ยงคืน (UTC time)
+  workflow_dispatch: # อนุญาตให้รันด้วยตนเองได้
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        # จำเป็นต้องใช้ Personal Access Token เพื่อให้ GitHub Actions สามารถ commit ไฟล์กลับได้
+        token: ${{ secrets.PAT_TOKEN }}
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        pip install requests icalendar
+
+    - name: Run script and generate iCal
+      env:
+        # ส่งค่า TMDB API Key จาก GitHub Secrets เข้าไปในสคริปต์ Python
+        TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+      run: python generate_dcu_cal.py
+
+    - name: Commit updated iCal file
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "Auto Update: DCU Calendar"
+        files: dcu_upcoming.ics # ไฟล์ที่เราสร้าง
