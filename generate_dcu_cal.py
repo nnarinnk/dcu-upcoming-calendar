@@ -3,7 +3,11 @@ import requests
 from icalendar import Calendar, Event
 import datetime
 
-TMDB_API_KEY = "TMDB_API_KEY" # **ห้ามใส่จริง ให้ใช้ Secret แทน**
+TMDB_API_KEY = os.environ.get("TMDB_API_KEY")
+
+if not TMDB_API_KEY:
+    raise ValueError("TMDB_API_KEY environment variable not set. Please set it in GitHub Secrets.")
+
 DC_STUDIOS_ID = 128064 # Company ID ของ DC Studios (ใช้สำหรับกรองข้อมูล)
 
 # 1. ฟังก์ชันดึงข้อมูลจาก TMDB (ตัวอย่าง: Upcoming Movies)
