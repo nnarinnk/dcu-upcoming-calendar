@@ -33,4 +33,4 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: "Auto Update: DCU Calendar"
-        files: dcu_upcoming.ics # ไฟล์ที่เราสร้าง
+        file_pattern: dcu_upcoming.ics # <-- เปลี่ยนเป็น file_pattern แทน
