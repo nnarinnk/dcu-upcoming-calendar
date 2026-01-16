@@ -33,7 +33,7 @@ def create_calendar():
         release_date = m.get('release_date')
         if release_date: # ตรวจสอบว่ามีวันที่ฉายหรือไม่
             event = Event()
-            event.add('summary', f"🎥 {m['title']}")
+            event.add('summary', f" {m['title']}")
             event.add('description', f"DCU Movie\nOverview: {m.get('overview', 'No description')}")
             dt = datetime.datetime.strptime(release_date, '%Y-%m-%d').date()
             event.add('dtstart', dt)
@@ -44,7 +44,7 @@ def create_calendar():
         air_date = s.get('first_air_date')
         if air_date:
             event = Event()
-            event.add('summary', f"📺 {s['name']}")
+            event.add('summary', f" {s['name']}")
             event.add('description', f"DCU Series\nOverview: {s.get('overview', 'No description')}")
             dt = datetime.datetime.strptime(air_date, '%Y-%m-%d').date()
             event.add('dtstart', dt)
