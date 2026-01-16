@@ -1,56 +1,62 @@
-# --- แนวคิดโค้ด (generate_dcu_cal.py) ---
 import os
 import requests
 from icalendar import Calendar, Event
 import datetime
-from datetime import date
 
+# ดึง API Key จาก GitHub Secrets
 TMDB_API_KEY = os.environ.get("TMDB_API_KEY")
+DCU_KEYWORD_ID = 312528  # Keyword: DC Universe (DCU)
 
-if not TMDB_API_KEY:
-    raise ValueError("TMDB_API_KEY environment variable not set. Please set it in GitHub Secrets.")
+def fetch_tmdb_data(endpoint):
+    """ฟังก์ชันช่วยดึงข้อมูลจาก TMDB ตาม endpoint ที่กำหนด"""
+    url = f"https://api.themoviedb.org/3/discover/{endpoint}"
+    params = {
+        "api_key": TMDB_API_KEY,
+        "with_keywords": DCU_KEYWORD_ID,
+        "sort_by": "primary_release_date.asc" if endpoint == "movie" else "first_air_date.asc"
+    }
+    response = requests.get(url, params=params)
+    return response.json().get('results', [])
 
-DC_COMPANY_IDS = "128064|9993"
-
-# 1. ฟังก์ชันดึงข้อมูลจาก TMDB (ตัวอย่าง: Upcoming Movies)
-def fetch_dcu_movies():
-    # หาวันที่ปัจจุบัน รูปแบบ YYYY-MM-DD
-    today = date.today().strftime("%Y-%m-%d")
+def create_calendar():
+    # 1. ดึงข้อมูลทั้งหนังและซีรีส์
+    movies = fetch_tmdb_data("movie")
+    tv_shows = fetch_tmdb_data("tv")
     
-    # เพิ่ม primary_release_date.gte เพื่อเอาเฉพาะหนังในอนาคต
-    url = f"https://api.themoviedb.org/3/discover/movie?api_key={TMDB_API_KEY}&with_companies={DC_COMPANY_IDS}&sort_by=primary_release_date.asc&primary_release_date.gte={today}"
-    
-    response = requests.get(url)
-    if response.status_code == 200:
-        data = response.json()
-        return data.get('results', [])
-    else:
-        print(f"Error fetching data: {response.status_code}")
-        return []
-
-# 2. ฟังก์ชันสร้างไฟล์ iCal
-def create_ical(movies):
     cal = Calendar()
-    cal.add('prodid', '-//DCU Calendar//EN')
+    cal.add('prodid', '-//My DCU Calendar//EN')
     cal.add('version', '2.0')
+    cal.add('x-wr-calname', 'DCU Upcoming Calendar') # ตั้งชื่อปฏิทิน
 
-    for movie in movies:
-        release_date = movie.get('release_date')
-        if release_date:
+    # 2. ประมวลผลข้อมูลหนัง
+    for m in movies:
+        release_date = m.get('release_date')
+        if release_date: # ตรวจสอบว่ามีวันที่ฉายหรือไม่
             event = Event()
-            event.add('summary', f"DCU Movie: {movie['title']}")
-            
-            # แปลงวันที่ให้เป็นวัตถุ Date
-            dt_start = datetime.datetime.strptime(release_date, '%Y-%m-%d').date()
-            event.add('dtstart', dt_start)
-            
+            event.add('summary', f"🎥 {m['title']}")
+            event.add('description', f"DCU Movie\nOverview: {m.get('overview', 'No description')}")
+            dt = datetime.datetime.strptime(release_date, '%Y-%m-%d').date()
+            event.add('dtstart', dt)
             cal.add_component(event)
 
-    # บันทึกไฟล์
+    # 3. ประมวลผลข้อมูลซีรีส์
+    for s in tv_shows:
+        air_date = s.get('first_air_date')
+        if air_date:
+            event = Event()
+            event.add('summary', f"📺 {s['name']}")
+            event.add('description', f"DCU Series\nOverview: {s.get('overview', 'No description')}")
+            dt = datetime.datetime.strptime(air_date, '%Y-%m-%d').date()
+            event.add('dtstart', dt)
+            cal.add_component(event)
+
+    # 4. บันทึกไฟล์ ics
     with open('dcu_upcoming.ics', 'wb') as f:
         f.write(cal.to_ical())
-        
-# 3. รันโปรแกรม
+    print("Calendar updated successfully!")
+
 if __name__ == "__main__":
-    dcu_data = fetch_dcu_movies()
-    create_ical(dcu_data)
+    if not TMDB_API_KEY:
+        print("Error: TMDB_API_KEY not found.")
+    else:
+        create_calendar()
