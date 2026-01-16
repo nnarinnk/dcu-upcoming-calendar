@@ -1,4 +1,58 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//DCU Calendar//EN
+PRODID:-//My DCU Calendar//EN
+X-WR-CALNAME:DCU Upcoming Calendar
+BEGIN:VEVENT
+SUMMARY: Superman
+DTSTART;VALUE=DATE:20250709
+DESCRIPTION:DCU Movie\nOverview: Superman\, a journalist in Metropolis\, e
+ mbarks on a journey to reconcile his Kryptonian heritage with his human up
+ bringing as Clark Kent.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Supergirl
+DTSTART;VALUE=DATE:20260624
+DESCRIPTION:DCU Movie\nOverview: While celebrating her 21st birthday\, Kar
+ a Zor-El travels across the galaxy with her dog Krypto\, during which she 
+ meets the young Ruthye Marye Knoll and goes on a "murderous quest for reve
+ nge".
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Clayface
+DTSTART;VALUE=DATE:20260909
+DESCRIPTION:DCU Movie\nOverview: A Hollywood horror tale centering on a B-
+ movie actor who injects himself with a substance to keep himself relevant\
+ , only to find out that he can reshape his face and form\, becoming a walk
+ ing piece of clay.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Man of Tomorrow
+DTSTART;VALUE=DATE:20270707
+DESCRIPTION:DCU Movie\nOverview: Superman and Lex Luthor team up to face a
+  larger threat. Plot TBA.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Dynamic Duo
+DTSTART;VALUE=DATE:20280629
+DESCRIPTION:DCU Movie\nOverview: Follow the early days of Dick Grayson and
+  Jason Todd and explore how their friendship becomes tested by their diver
+ ging ideas for what their future should be.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Peacemaker
+DTSTART;VALUE=DATE:20220113
+DESCRIPTION:DCU Series\nOverview: The continuing story of Peacemaker\, a v
+ ainglorious superhero/supervillain who believes in peace at any cost — n
+ o matter how many people he has to kill. After a miraculous recovery from 
+ his duel with Bloodsport\, Peacemaker soon discovers that his freedom come
+ s at a price.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Creature Commandos
+DTSTART;VALUE=DATE:20241205
+DESCRIPTION:DCU Series\nOverview: Follow the exploits of the Creature Comm
+ andos\, a secret team of incarcerated monsters recruited for missions deem
+ ed too dangerous for humans. When all else fails... they're your last\, wo
+ rst option.
+END:VEVENT
 END:VCALENDAR
