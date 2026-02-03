@@ -10,6 +10,12 @@ DESCRIPTION:DCU Movie\nOverview: Superman\, a journalist in Metropolis\, e
  bringing as Clark Kent.
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY: BECOMING ROBIN
+DTSTART;VALUE=DATE:20251231
+DESCRIPTION:DCU Movie\nOverview: A spin-off short film of "Red Hood: Resur
+ rection" focusing on the life of Robin\, AKA Tim Drake.
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY: Supergirl
 DTSTART;VALUE=DATE:20260624
 DESCRIPTION:DCU Movie\nOverview: While celebrating her 21st birthday\, Kar
