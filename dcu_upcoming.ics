@@ -1,64 +1,202 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//My DCU Calendar//EN
-X-WR-CALNAME:DCU Upcoming Calendar
+PRODID:-//Superhero Calendar//EN
+X-WR-CALNAME:Superhero & Invincible Calendar
 BEGIN:VEVENT
-SUMMARY: Superman
+SUMMARY:🎥 [DCU] Superman
 DTSTART;VALUE=DATE:20250709
-DESCRIPTION:DCU Movie\nOverview: Superman\, a journalist in Metropolis\, e
- mbarks on a journey to reconcile his Kryptonian heritage with his human up
- bringing as Clark Kent.
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY: BECOMING ROBIN
+SUMMARY:🎥 [DCU] BECOMING ROBIN
 DTSTART;VALUE=DATE:20251231
-DESCRIPTION:DCU Movie\nOverview: A spin-off short film of "Red Hood: Resur
- rection" focusing on the life of Robin\, AKA Tim Drake.
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY: Supergirl
+SUMMARY:🎥 [DCU] Supergirl
 DTSTART;VALUE=DATE:20260624
-DESCRIPTION:DCU Movie\nOverview: While celebrating her 21st birthday\, Kar
- a Zor-El travels across the galaxy with her dog Krypto\, during which she 
- meets the young Ruthye Marye Knoll and goes on a "murderous quest for reve
- nge".
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY: Clayface
+SUMMARY:🎥 [DCU] Clayface
 DTSTART;VALUE=DATE:20260909
-DESCRIPTION:DCU Movie\nOverview: A Hollywood horror tale centering on a B-
- movie actor who injects himself with a substance to keep himself relevant\
- , only to find out that he can reshape his face and form\, becoming a walk
- ing piece of clay.
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY: Man of Tomorrow
+SUMMARY:🎥 [DCU] Man of Tomorrow
 DTSTART;VALUE=DATE:20270707
-DESCRIPTION:DCU Movie\nOverview: Superman and Lex Luthor team up to face a
-  larger threat. Plot TBA.
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY: Dynamic Duo
+SUMMARY:🎥 [DCU] Dynamic Duo
 DTSTART;VALUE=DATE:20280629
-DESCRIPTION:DCU Movie\nOverview: Follow the early days of Dick Grayson and
-  Jason Todd and explore how their friendship becomes tested by their diver
- ging ideas for what their future should be.
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY: Peacemaker
+SUMMARY:📺 [DCU] Peacemaker
 DTSTART;VALUE=DATE:20220113
-DESCRIPTION:DCU Series\nOverview: The continuing story of Peacemaker\, a v
- ainglorious superhero/supervillain who believes in peace at any cost — n
- o matter how many people he has to kill. After a miraculous recovery from 
- his duel with Bloodsport\, Peacemaker soon discovers that his freedom come
- s at a price.
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY: Creature Commandos
+SUMMARY:📺 [DCU] Creature Commandos
 DTSTART;VALUE=DATE:20241205
-DESCRIPTION:DCU Series\nOverview: Follow the exploits of the Creature Comm
- andos\, a secret team of incarcerated monsters recruited for missions deem
- ed too dangerous for humans. When all else fails... they're your last\, wo
- rst option.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🎥 [MCU] Iron Man
+DTSTART;VALUE=DATE:20080430
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🎥 [MCU] The Incredible Hulk
+DTSTART;VALUE=DATE:20080612
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🎥 [MCU] Iron Man 2
+DTSTART;VALUE=DATE:20100428
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🎥 [MCU] Thor
+DTSTART;VALUE=DATE:20110421
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🎥 [MCU] Captain America: The First Avenger
+DTSTART;VALUE=DATE:20110722
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🎥 [MCU] Marvel One-Shot: The Consultant
+DTSTART;VALUE=DATE:20110913
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🎥 [MCU] Marvel One-Shot: A Funny Thing Happened on the Way to T
+ hor's Hammer
+DTSTART;VALUE=DATE:20111025
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🎥 [MCU] The Avengers
+DTSTART;VALUE=DATE:20120425
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🎥 [MCU] Marvel One-Shot: Item 47
+DTSTART;VALUE=DATE:20120829
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🎥 [MCU] Marvel Studios: Building a Cinematic Universe
+DTSTART;VALUE=DATE:20120925
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🎥 [MCU] Iron Man 3
+DTSTART;VALUE=DATE:20130418
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🎥 [MCU] Marvel One-Shot: Agent Carter
+DTSTART;VALUE=DATE:20131004
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🎥 [MCU] Thor: The Dark World
+DTSTART;VALUE=DATE:20131030
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🎥 [MCU] Marvel One-Shot: All Hail the King
+DTSTART;VALUE=DATE:20140204
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🎥 [MCU] Marvel Studios: Assembling a Universe
+DTSTART;VALUE=DATE:20140318
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🎥 [MCU] Captain America: The Winter Soldier
+DTSTART;VALUE=DATE:20140320
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🎥 [MCU] Guardians of the Galaxy
+DTSTART;VALUE=DATE:20140730
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🎥 [MCU] Avengers: Age of Ultron
+DTSTART;VALUE=DATE:20150422
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🎥 [MCU] Ant-Man
+DTSTART;VALUE=DATE:20150714
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🎥 [MCU] Marvel's Most Wanted
+DTSTART;VALUE=DATE:20160101
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📺 [MCU] Marvel's Agents of S.H.I.E.L.D.
+DTSTART;VALUE=DATE:20130924
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📺 [MCU] Marvel's Agent Carter
+DTSTART;VALUE=DATE:20150106
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📺 [MCU] Marvel's Daredevil
+DTSTART;VALUE=DATE:20150410
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📺 [MCU] WHIH Newsfront
+DTSTART;VALUE=DATE:20150702
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📺 [MCU] Marvel's Jessica Jones
+DTSTART;VALUE=DATE:20151120
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📺 [MCU] Marvel's Luke Cage
+DTSTART;VALUE=DATE:20160930
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📺 [MCU] Marvel's Agents of S.H.I.E.L.D.: Slingshot
+DTSTART;VALUE=DATE:20161213
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📺 [MCU] Marvel's Iron Fist
+DTSTART;VALUE=DATE:20170317
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📺 [MCU] Marvel's The Defenders
+DTSTART;VALUE=DATE:20170818
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📺 [MCU] Marvel's Inhumans
+DTSTART;VALUE=DATE:20170929
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📺 [MCU] Marvel's The Punisher
+DTSTART;VALUE=DATE:20171117
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📺 [MCU] Marvel's Runaways
+DTSTART;VALUE=DATE:20171121
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📺 [MCU] Marvel's Cloak & Dagger
+DTSTART;VALUE=DATE:20180607
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📺 [MCU] Helstrom
+DTSTART;VALUE=DATE:20201016
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📺 [MCU] Marvel Studios Legends
+DTSTART;VALUE=DATE:20210108
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📺 [MCU] WandaVision
+DTSTART;VALUE=DATE:20210115
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📺 [MCU] Marvel Studios Assembled
+DTSTART;VALUE=DATE:20210312
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📺 [MCU] The Falcon and the Winter Soldier
+DTSTART;VALUE=DATE:20210319
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📺 [MCU] Loki
+DTSTART;VALUE=DATE:20210609
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📺 [MCU] What If...?
+DTSTART;VALUE=DATE:20210811
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🦸‍♂️ Legendary Taste of Sichuan (Season Start)
+DTSTART;VALUE=DATE:20150218
 END:VEVENT
 END:VCALENDAR
