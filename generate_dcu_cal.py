@@ -3,84 +3,79 @@ import requests
 from icalendar import Calendar, Event
 import datetime
 
-# ดึง API Key จาก GitHub Secrets
 TMDB_API_KEY = os.environ.get("TMDB_API_KEY")
+TODAY = datetime.date.today().isoformat()
 
-# รายการแหล่งข้อมูลที่ต้องการติดตาม
+# รายการแหล่งข้อมูล
 UNIVERSES = [
     {"name": "DCU", "keyword_id": 312528},
     {"name": "MCU", "keyword_id": 180547}
 ]
 
-# รายชื่อซีรีส์เฉพาะเรื่อง (เช่น Invincible)
 SPECIFIC_TV_SHOWS = [
     {"name": "Invincible", "id": 95595}
 ]
 
-def fetch_universe_data(endpoint, keyword_id):
-    """ดึงข้อมูลหนังหรือซีรีส์ตาม Keyword ID"""
+def fetch_upcoming(endpoint, keyword_id):
+    """ดึงเฉพาะหนัง/ซีรีส์ที่ฉายตั้งแต่วันนี้เป็นต้นไป"""
     url = f"https://api.themoviedb.org/3/discover/{endpoint}"
+    date_param = "primary_release_date.gte" if endpoint == "movie" else "first_air_date.gte"
     params = {
         "api_key": TMDB_API_KEY,
         "with_keywords": keyword_id,
-        "sort_by": "primary_release_date.asc" if endpoint == "movie" else "first_air_date.asc"
+        date_param: TODAY, # ดึงเฉพาะอนาคต
+        "sort_by": f"{date_param}.asc"
     }
     return requests.get(url, params=params).json().get('results', [])
 
-def fetch_specific_tv(tv_id):
-    """ดึงข้อมูลซีรีส์เฉพาะเรื่องโดยใช้ ID"""
+def fetch_tv_seasons(tv_id):
+    """ดึงข้อมูลทุก Season ของซีรีส์เพื่อหาวันฉายในอนาคต"""
     url = f"https://api.themoviedb.org/3/tv/{tv_id}?api_key={TMDB_API_KEY}"
-    return requests.get(url).json()
+    data = requests.get(url).json()
+    seasons = data.get('seasons', [])
+    upcoming_seasons = []
+    
+    for s in seasons:
+        air_date = s.get('air_date')
+        # กรองเอาเฉพาะ Season ที่จะฉายในอนาคต
+        if air_date and air_date >= TODAY:
+            upcoming_seasons.append({
+                "name": f"{data['name']} - {s['name']}",
+                "date": air_date
+            })
+    return upcoming_seasons
 
 def create_calendar():
     cal = Calendar()
     cal.add('prodid', '-//Superhero Calendar//EN')
     cal.add('version', '2.0')
-    cal.add('x-wr-calname', 'Superhero & Invincible Calendar')
+    cal.add('x-wr-calname', 'Marvel, DC & Invincible')
 
-    # 1. ดึงข้อมูลจาก Universe (DCU, MCU)
+    # 1. ดึงข้อมูล Universe (MCU & DCU)
     for uni in UNIVERSES:
-        # ดึงหนัง
-        for m in fetch_universe_data("movie", uni['keyword_id']):
-            date_str = m.get('release_date')
-            if date_str:
-                event = Event()
-                event.add('summary', f"🎥 [{uni['name']}] {m['title']}")
-                event.add('dtstart', datetime.datetime.strptime(date_str, '%Y-%m-%d').date())
-                cal.add_component(event)
-        
-        # ดึงซีรีส์ในจักรวาลนั้นๆ
-        for s in fetch_universe_data("tv", uni['keyword_id']):
-            date_str = s.get('first_air_date')
-            if date_str:
-                event = Event()
-                event.add('summary', f"📺 [{uni['name']}] {s['name']}")
-                event.add('dtstart', datetime.datetime.strptime(date_str, '%Y-%m-%d').date())
-                cal.add_component(event)
+        for m in fetch_upcoming("movie", uni['keyword_id']):
+            event = Event()
+            event.add('summary', f"🎥 [{uni['name']}] {m['title']}")
+            event.add('dtstart', datetime.datetime.strptime(m['release_date'], '%Y-%m-%d').date())
+            cal.add_component(event)
+            
+        for s in fetch_upcoming("tv", uni['keyword_id']):
+            event = Event()
+            event.add('summary', f"📺 [{uni['name']}] {s['name']}")
+            event.add('dtstart', datetime.datetime.strptime(s['first_air_date'], '%Y-%m-%d').date())
+            cal.add_component(event)
 
-    # 2. ดึงข้อมูลซีรีส์เฉพาะเรื่อง (Invincible)
+    # 2. ดึงข้อมูล Invincible (Season 4 และอื่นๆ)
     for show in SPECIFIC_TV_SHOWS:
-        data = fetch_specific_tv(show['id'])
-        # ดึงวันฉายตอนแรก (First Air Date)
-        first_date = data.get('first_air_date')
-        if first_date:
+        for s in fetch_tv_seasons(show['id']):
             event = Event()
-            event.add('summary', f"🦸‍♂️ {data['name']} (Season Start)")
-            event.add('dtstart', datetime.datetime.strptime(first_date, '%Y-%m-%d').date())
-            cal.add_component(event)
-        
-        # (แถม) ดึงวันฉายตอนถัดไปถ้ามีข้อมูล (Next Episode To Air)
-        next_ep = data.get('next_episode_to_air')
-        if next_ep:
-            event = Event()
-            event.add('summary', f"🆕 {data['name']} - S{next_ep['season_number']}E{next_ep['episode_number']}")
-            event.add('dtstart', datetime.datetime.strptime(next_ep['air_date'], '%Y-%m-%d').date())
+            event.add('summary', f"🦸‍♂️ {s['name']}")
+            event.add('dtstart', datetime.datetime.strptime(s['date'], '%Y-%m-%d').date())
             cal.add_component(event)
 
-    # บันทึกไฟล์ (ใช้ชื่อเดิมเพื่อให้ Link เดิมยังใช้งานได้)
     with open('dcu_upcoming.ics', 'wb') as f:
         f.write(cal.to_ical())
-    print("Calendar updated with DCU, MCU, and Invincible!")
+    print(f"Update completed on {TODAY}")
 
 if __name__ == "__main__":
     if TMDB_API_KEY:
