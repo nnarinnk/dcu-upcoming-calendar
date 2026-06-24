@@ -3,10 +3,6 @@ VERSION:2.0
 PRODID:-//Superhero & The Boys Tracker//EN
 X-WR-CALNAME:Marvel\, DC\, Invincible & The Boys
 BEGIN:VEVENT
-SUMMARY:📺 Legendary Taste of Sichuan - Season 5
-DTSTART;VALUE=DATE:20260509
-END:VEVENT
-BEGIN:VEVENT
 SUMMARY:🎥 [DCU] Supergirl
 DTSTART;VALUE=DATE:20260623
 END:VEVENT
