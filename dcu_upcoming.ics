@@ -1,7 +1,7 @@
 BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Superhero & The Boys Tracker//EN
-X-WR-CALNAME:Marvel\, DC\, Invincible & The Boys
+X-WR-CALNAME:Marvel, DC, Invincible & The Boys
 BEGIN:VEVENT
 SUMMARY:🎥 [DCU] Clayface
 DTSTART;VALUE=DATE:20261021
